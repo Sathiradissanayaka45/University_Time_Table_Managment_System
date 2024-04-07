@@ -1,0 +1,78 @@
+# Project Details
+
+## IT Number
+IT21827662
+
+## Group
+Y3.S1.SE.WE.01.01
+
+## Project Setup Instructions
+```bash
+# Install packages
+npm install
+
+# After successful installation, run:
+npm start
+
+# API Endpoints
+
+## Base URL
+- **Base URL:** http://localhost:8000
+
+## POST Methods
+
+- `/auth/register` - User registration
+- `/auth/login` - User Login
+- `/rooms/` - Create Room
+- `/resources/` - Create Resource
+- `/courses/` - Create Course
+- `/faculty/assign-course` - Assign faculty to course
+- `/class-sessions/` - Create Class Session
+- `/enrollments/enroll` - Enroll for course
+- `/notifications/announcement` - Send announcement to table and send announcement for students mail
+- `/bookings/` - Create booking
+
+## GET Methods
+
+- `/courses/` - Get all courses
+- `/courses/:id` - Get course by ID
+- `/timetable/:studentId` - Get timetable by student id
+- `/rooms/` - Get all rooms
+- `/resources/` - Get all resources
+- `/enrollments/:studentId` - Get enrollment by student ID
+- `/enrollments/course/:courseId` - Get enrollment by course ID
+- `/bookings/` - Get all booking
+- `/bookings/:id` - Get booking by id
+- `/class-sessions/` - Get all class session
+- `/faculty/` - Get all faculty members for assign course
+- `/notifications/announcements` - Get all announcements
+
+## PUT Methods
+
+- `/courses/:id` - Update course by id
+- `/class-sessions/:classSessionId` - Update class session by id and send mail for students
+- `/rooms/:roomId` - Update room availability id
+- `/resources/:resourceId` - Update resource availability by 
+- `/bookings/:id` - Update booking
+
+## DELETE Methods
+
+- `/courses/:id` - Delete course by id
+- `/class-sessions/:classSessionId` - Delete class session by id
+- `/enrollments/:enrollmentId` - Delete enrollment by id
+- `/bookings/:id` - Delete booking by id
+- `/resources/:resourceId` - Delete resource by id
+- `/rooms/:roomId` - Delete room by id
+
+
+# Testing Setup Instructions
+
+To set up testing, follow these steps:
+
+1. Install testing packages:
+   ```bash
+   npm install --save-dev jest supertest @babel/preset-env @babel/preset-typescript babel-jest ts-jest
+
+```bash
+# Start testing
+ npm test

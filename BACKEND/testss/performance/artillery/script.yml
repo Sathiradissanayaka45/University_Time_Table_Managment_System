@@ -1,0 +1,128 @@
+config:
+  target: 'http://localhost:8000'
+  phases:
+    - duration: 60
+      arrivalRate: 10
+scenarios:
+  - flow:
+      - post:
+          url: '/auth/register'
+          json:
+            username: 'testuser'
+            email: 'test@example.com'
+            password: 'testpassword'
+            role: 'Student'
+      - post:
+          url: '/auth/login'
+          json:
+            email: 'test@example.com'
+            password: 'testpassword'
+      - post:
+          url: '/courses'
+          json:
+            name: 'Course Name'
+            code: 'COURSE_CODE'
+            description: 'Course Description'
+            credits: 3
+      - get:
+          url: '/courses'
+      - get:
+          url: '/courses/65ff5ca751d9f1537fbaf426' 
+      - put:
+          url: '/courses/65ff5ca751d9f1537fbaf426' 
+          json:
+            name: 'Updated Course Name'
+            description: 'Updated Course Description'
+            credits: 4
+      - delete:
+          url: '/courses/65ff5ca751d9f1537fbaf426' 
+      - get:
+          url: '/timetable/65fd877d3a2a48feb5ad3a4d' 
+      - post:
+          url: '/rooms'
+          json:
+            roomNumber: '101'
+            capacity: 50
+            isAvailable: true
+      - get:
+          url: '/rooms'
+      - put:
+          url: '/rooms/65ff60f7abba8dce5fc1a187' 
+          json:
+            isAvailable: false
+      - delete:
+          url: '/rooms/65ff60f7abba8dce5fc1a187' 
+      - post:
+          url: '/resources'
+          json:
+            name: 'Projector'
+            quantity: 5
+            isAvailable: true
+      - get:
+          url: '/resources'
+      - put:
+          url: '/resources/65ff61b8800fe038b2626428' 
+          json:
+            isAvailable: false
+      - delete:
+          url: '/resources/65ff61b8800fe038b2626428' 
+      - post:
+          url: '/notifications/announcement'
+          json:
+            message: 'Important announcement!'
+      - get:
+          url: '/notifications/announcements'
+      - post:
+          url: '/faculty/assign-course'
+          json:
+            facultyId: '65fdd54eb6c451e32778c07f' 
+            courseId: '65ff5ca751d9f1537fbaf426'  
+      - get:
+          url: '/faculty'
+      - post:
+          url: '/enrollments/enroll'
+          json:
+            studentId: '65fd877d3a2a48feb5ad3a4d' 
+            courseId: '65ff5ca751d9f1537fbaf426'   
+      - get:
+          url: '/enrollments/65fd877d3a2a48feb5ad3a4d' 
+      - get:
+          url: '/enrollments/course/65ff5ca751d9f1537fbaf426'
+      - delete:
+          url: '/enrollments/65ff6a18800fe038b26264de' 
+      - post:
+          url: '/class-sessions'
+          json:
+            courseId: '65ff5ca751d9f1537fbaf426' 
+            startTime: '2024-03-31T09:00:00'
+            endTime: '2024-03-31T12:00:00'
+            room: '65ff60f7abba8dce5fc1a187'          
+            faculty: '65fdd54eb6c451e32778c07f'     
+      - get:
+          url: '/class-sessions'
+      - put:
+          url: '/class-sessions/65ff6295800fe038b262643d' 
+          json:
+            startTime: '2024-03-31T10:00:00'
+      - delete:
+          url: '/class-sessions/65ff6295800fe038b262643d' 
+      - post:
+          url: '/bookings'
+          json:
+            classSessionId: '65ff6295800fe038b262643d' 
+            studentId: '65fd877d3a2a48feb5ad3a4d'           
+            date: '2024-03-31'
+            startTime: '09:00:00'
+            endTime: '11:00:00'
+      - get:
+          url: '/bookings'
+      - get:
+          url: '/bookings/65ff67f5800fe038b26264b1' 
+      - put:
+          url: '/bookings/65ff67f5800fe038b26264b1' 
+          json:
+            date: '2024-04-01'
+      - delete:
+          url: '/bookings/65ff67f5800fe038b26264b1' 
+
+
